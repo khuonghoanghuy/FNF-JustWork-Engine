@@ -125,6 +125,7 @@
 	<!--JustWork stuff needed-->
 	<haxelib name="grig.audio"/>
 	<haxelib name="funkin.vis"/>
+	<haxelib name="flxscaledslicesprite"/>
 
 	<!-- Disable Discord IO Thread -->
 	<haxedef name="DISCORD_DISABLE_IO_THREAD" if="hxdiscord_rpc" />

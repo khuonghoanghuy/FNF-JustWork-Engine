@@ -1,5 +1,7 @@
 package backend.ui;
 
+import flixel.math.FlxRect;
+import tracedinpurple.ui.FlxScaledSliceSprite;
 import backend.ui.PsychUIBox.UIStyleData;
 
 class PsychUIButton extends FlxSpriteGroup
@@ -8,7 +10,7 @@ class PsychUIButton extends FlxSpriteGroup
 
 	public var name:String;
 	public var label(default, set):String;
-	public var bg:FlxSprite;
+	public var bg:FlxScaledSliceSprite;
 	public var text:FlxText;
 
 	public var onChangeState:String->Void;
@@ -33,7 +35,9 @@ class PsychUIButton extends FlxSpriteGroup
 	public function new(x:Float = 0, y:Float = 0, label:String = '', ?onClick:Void->Void = null, ?wid:Int = 80, ?hei:Int = 20)
 	{
 		super(x, y);
-		bg = new FlxSprite().makeGraphic(1, 1, FlxColor.WHITE);
+		var rect = new FlxRect(x, y, 8, 8);
+		bg = new FlxScaledSliceSprite(Paths.image("editors/button"), rect, 2, wid, hei);
+		bg.stretchAll();
 		add(bg);
 		bg.color = 0xFFAAAAAA;
 		bg.alpha = 0.6;
@@ -98,8 +102,8 @@ class PsychUIButton extends FlxSpriteGroup
 
 	public function resize(width:Int, height:Int)
 	{
-		bg.setGraphicSize(width, height);
-		bg.updateHitbox();
+		// bg.setGraphicSize(width, height);
+		// bg.updateHitbox();
 		text.fieldWidth = width;
 		text.x = bg.x;
 		text.y = bg.y + height/2 - text.height/2;
